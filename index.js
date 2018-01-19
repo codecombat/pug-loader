@@ -183,7 +183,8 @@ module.exports = function(source) {
 				missingFileMode = false;
 				return;
 			}
-			throw e;
+      loaderContext.callback(e);
+			return;
 		}
 		var runtime = "var jade = require("+JSON.stringify(require.resolve("jade/lib/runtime"))+");\n\n";
 		loaderContext.callback(null, runtime + "module.exports = " + tmplFunc.toString());
